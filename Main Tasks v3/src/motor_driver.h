@@ -7,13 +7,9 @@
 #include <Arduino.h>
 #include "PrintStream.h"
 
-#define INA1 12
-#define INA2 14
-#define PWMA 27
-
-#define INB1 0
-#define INB2 2
-#define PWMB 4
+#define INB1 12
+#define INB2 27
+#define PWMB 14
 #define MAX_DUTY 255
 
 /** @brief   Class which drives geared dc motor

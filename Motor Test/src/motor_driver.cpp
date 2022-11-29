@@ -1,5 +1,7 @@
 /** @file motor_driver.cpp
- *  This program 
+ *  This program includes the motor driver class for creating motor objects although only one motor
+ *  is used for our project. The motor driver can take two motors, although we are using one and still
+ *  include the capability to attach two.
  * 
  *  @author Christian Clephan
  *  @date   11-16-22
@@ -11,37 +13,37 @@
  */
 MotorDriver::MotorDriver (void)
 {
-  pinMode(INB1, OUTPUT);
-  digitalWrite(INB1, HIGH);
+  pinMode(INA1, OUTPUT);
+  digitalWrite(INA1, HIGH);
 
-  pinMode(INB2, OUTPUT);
-  digitalWrite(INB2, LOW);
+  pinMode(INA2, OUTPUT);
+  digitalWrite(INA2, LOW);
 
-  pinMode(PWMB, OUTPUT);
+  pinMode(PWMA, OUTPUT);
 }
 
 void MotorDriver::set_duty(int16_t duty)
 {
     if (duty >= 0){
         //Positive duty = CW = positive position
-        digitalWrite(INB1, HIGH);
-        digitalWrite(INB2, LOW);
-        analogWrite(PWMB, duty);
+        digitalWrite(INA1, HIGH);
+        digitalWrite(INA2, LOW);
+        analogWrite(PWMA, duty);
     }
     else{
         //Negative duty = CCW = negative position
-        digitalWrite(INB1, LOW);
-        digitalWrite(INB2, HIGH);
-        analogWrite(PWMB, -duty); 
+        digitalWrite(INA1, LOW);
+        digitalWrite(INA2, HIGH);
+        analogWrite(PWMA, -duty); 
     }
 }
 
 void MotorDriver::stop(void){
-    analogWrite(PWMB, 0);
+    analogWrite(PWMA, 0);
 }
 
 void MotorDriver::SOS(void){
-    digitalWrite(INB1, HIGH);
-    digitalWrite(INB2, LOW);
-    analogWrite(PWMB, MAX_DUTY);
+    digitalWrite(INA1, HIGH);
+    digitalWrite(INA2, LOW);
+    analogWrite(PWMA, MAX_DUTY);
 }
