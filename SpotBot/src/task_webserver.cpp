@@ -1,15 +1,17 @@
-/** @file main.cpp
- *  This program runs a very simple web server, demonstrating how to serve a
- *  static web page and how to use a web link to get the microcontroller to do
- *  something simple. 
+/** @file task_webserver.cpp
+ *  This program runs a simple SpotBot web server, providing the user with useful
+ *  information on how fast they are moving the weight. This can be helpful in
+ *  gauging the strain on the user and testing their limits. 
  * 
  *  Based on an examples by A. Sinha at 
  *  @c https://github.com/hippyaki/WebServers-on-ESP32-Codes
  * 
  *  @author A. Sinha
  *  @author JR Ridgely
+ *  @author Christian Clephan
  *  @date   2022-Mar-28 Original stuff by Sinha
  *  @date   2022-Nov-04 Modified for ME507 use by Ridgely
+ *  @date   2022-Nov-30 Modified for SpotBot use by Christian Clephan
  *  @copyright 2022 by the authors, released under the MIT License.
  */
 
@@ -173,7 +175,8 @@ void handle_Toggle_LED (void)
 /** @brief   Show some simulated data when asked by the web server.
  *  @details The contrived data is sent in a relatively efficient Comma
  *           Separated Variable (CSV) format which is easily read by Matlab(tm)
- *           and Python and spreadsheets.
+ *           and Python and spreadsheets. This contains the time, and velocity
+ *           data from both IMUs.
  */
 void handle_CSV (void)
 {
@@ -181,12 +184,12 @@ void handle_CSV (void)
     // The first line will be column headers so we know what the data is
     String csv_str = "Time (s), Velocity R (m/s), Velocity L (m/s)\n";
 
-    // Create some fake data and put it into a String object. We could just
-    // as easily have taken values from a data array, if such an array existed
+    // Creates 200 rows of data at roughly 100ms intervals with the user's
+    // barbell velocities
     for (uint8_t index = 0; index < 200; index++)
     {
         if(timer.available()){
-            csv_str += timer.get()/10; //time is counting every 100ms divide  by 10 to get seconds
+            csv_str += timer.get(); //time is counting every 100ms divide  by 10 to get seconds
             csv_str += ",";
             csv_str += vel_r.get();
             csv_str += ",";

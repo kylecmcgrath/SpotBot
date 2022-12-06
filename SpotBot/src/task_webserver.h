@@ -1,3 +1,8 @@
+/** @file task_webserver.h
+ *  This is the header for the task webserver file.
+ * 
+ *  @author Christian Clephan
+ */
 
 #include <Arduino.h>
 
