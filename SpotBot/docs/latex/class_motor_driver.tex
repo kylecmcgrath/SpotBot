@@ -1,0 +1,41 @@
+\hypertarget{class_motor_driver}{}\doxysection{Motor\+Driver Class Reference}
+\label{class_motor_driver}\index{MotorDriver@{MotorDriver}}
+
+
+Class which drives geared dc motor.  
+
+
+
+
+{\ttfamily \#include $<$motor\+\_\+driver.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_motor_driver_adf475b1ee61a458f4a0449c87ae4b84c}\label{class_motor_driver_adf475b1ee61a458f4a0449c87ae4b84c}} 
+{\bfseries Motor\+Driver} (void)
+\begin{DoxyCompactList}\small\item\em Constructor which creates a motor driver object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_motor_driver_a1ce7113ab1f7d530c3f924bc3404bdc2}\label{class_motor_driver_a1ce7113ab1f7d530c3f924bc3404bdc2}} 
+void {\bfseries set\+\_\+duty} (int16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Method which sets the duty of a motor in CW (+) or CCW (-\/) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_motor_driver_af9adcfb5bcea29b6d171dd8cf4115fbc}\label{class_motor_driver_af9adcfb5bcea29b6d171dd8cf4115fbc}} 
+void {\bfseries stop} (void)
+\begin{DoxyCompactList}\small\item\em Method which stops the motor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_motor_driver_a98fb2edd5c82decfc0a6de146c08578c}\label{class_motor_driver_a98fb2edd5c82decfc0a6de146c08578c}} 
+void {\bfseries SOS} (void)
+\begin{DoxyCompactList}\small\item\em Method which sets the motor at max speed CW. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_motor_driver_a65d0abdca539cc7262be328dfd33759e}\label{class_motor_driver_a65d0abdca539cc7262be328dfd33759e}} 
+int16\+\_\+t {\bfseries duty} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class which drives geared dc motor. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{motor__driver_8h}{motor\+\_\+driver.\+h}}\item 
+src/\mbox{\hyperlink{motor__driver_8cpp}{motor\+\_\+driver.\+cpp}}\end{DoxyCompactItemize}

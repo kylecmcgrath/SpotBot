@@ -1,0 +1,35 @@
+\hypertarget{shares_8h_source}{}\doxysection{shares.\+h}
+\label{shares_8h_source}\index{src/shares.h@{src/shares.h}}
+\mbox{\hyperlink{shares_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_SHARES\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_SHARES\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}taskqueue.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}taskshare.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// A share which holds boolean whether or not to be spotted}}
+\DoxyCodeLine{19 \textcolor{keyword}{extern} Share<bool> spot\_me\_bro;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{comment}{// A share which holds boolean whether spotting is completed or not}}
+\DoxyCodeLine{22 \textcolor{keyword}{extern} Share<bool> spot\_complete;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// A share which holds boolean whether to send data or not}}
+\DoxyCodeLine{25 \textcolor{keyword}{extern} Share<bool> send\_data;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{// A queue which triggers a task to print the count at certain times}}
+\DoxyCodeLine{28 \textcolor{keyword}{extern} Queue<float> vel\_queue;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// A queue which holds time values to be displayed by task\_webserver}}
+\DoxyCodeLine{31 \textcolor{keyword}{extern} Queue<float> timer;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// A queue which holds right IMU velocity values to be displayed by task\_webserver}}
+\DoxyCodeLine{34 \textcolor{keyword}{extern} Queue<float> vel\_r;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// A queue which holds left IMU velocity values to be displayed by task\_webserver}}
+\DoxyCodeLine{37 \textcolor{keyword}{extern} Queue<float> vel\_l;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_SHARES\_H\_}}
+
+\end{DoxyCode}

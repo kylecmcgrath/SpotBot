@@ -1,0 +1,94 @@
+\hypertarget{task__motor_8cpp}{}\doxysection{src/task\+\_\+motor.cpp File Reference}
+\label{task__motor_8cpp}\index{src/task\_motor.cpp@{src/task\_motor.cpp}}
+{\ttfamily \#include \char`\"{}motor\+\_\+driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task\+\_\+motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Print\+Stream.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shares.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_ae7a773cd5d4efe75433c1818b93fca18}\label{task__motor_8cpp_ae7a773cd5d4efe75433c1818b93fca18}} 
+\#define {\bfseries OUTA}~36
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a1441aa5a534a1180ad256616c559ef16}\label{task__motor_8cpp_a1441aa5a534a1180ad256616c559ef16}} 
+\#define {\bfseries OUTB}~39
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a15f5c76e7d192556e69a0d702294b233}\label{task__motor_8cpp_a15f5c76e7d192556e69a0d702294b233}} 
+Share$<$ bool $>$ {\bfseries spot\+\_\+complete} (\char`\"{}Is complete?\char`\"{})
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_abc2f6086b45e84f90853d92e86926836}\label{task__motor_8cpp_abc2f6086b45e84f90853d92e86926836}} 
+void {\bfseries update\+\_\+pos} ()
+\begin{DoxyCompactList}\small\item\em ISR that updates encoder count when there is a change in encoder digital\+Read value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task__motor_8cpp_aa5e85a29ea6967e65c3765aaf9cbf0f7}{task\+\_\+motor}} (void $\ast$p\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Task motor interfaces with other tasks shares to turn on and off motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a0b57aa10271a66f3dc936bba1d2f3830}\label{task__motor_8cpp_a0b57aa10271a66f3dc936bba1d2f3830}} 
+uint8\+\_\+t {\bfseries state} = 0
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a657a01ad3fd5007f8b140f02252e6ec1}\label{task__motor_8cpp_a657a01ad3fd5007f8b140f02252e6ec1}} 
+\mbox{\hyperlink{class_motor_driver}{Motor\+Driver}} {\bfseries motor}
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a45d5a08027ccf6bba1d7843cbb2276e4}\label{task__motor_8cpp_a45d5a08027ccf6bba1d7843cbb2276e4}} 
+bool {\bfseries spot} = 0
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a0ef9981fa03d2e9e11d74e46288cc62b}\label{task__motor_8cpp_a0ef9981fa03d2e9e11d74e46288cc62b}} 
+bool {\bfseries OUTA\+\_\+val1} = digital\+Read(OUTA)
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a207dd91a8bbe8ce2267c816742e7d829}\label{task__motor_8cpp_a207dd91a8bbe8ce2267c816742e7d829}} 
+bool {\bfseries OUTA\+\_\+val2} = digital\+Read(OUTA)
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a2a1c35bdad8bde5340bb8763f7f9a405}\label{task__motor_8cpp_a2a1c35bdad8bde5340bb8763f7f9a405}} 
+bool {\bfseries OUTB\+\_\+val1} = digital\+Read(OUTB)
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_aaec3cd97712876a5e9ff70559b1fca26}\label{task__motor_8cpp_aaec3cd97712876a5e9ff70559b1fca26}} 
+int32\+\_\+t {\bfseries counter} = 0
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_ad800e5ebc8515fd07158dbc3b8aedbbe}\label{task__motor_8cpp_ad800e5ebc8515fd07158dbc3b8aedbbe}} 
+float {\bfseries calib\+\_\+coeff} = (3.\+4/4096)/2
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a99019e514f7e452fe08eee6b4f05d620}\label{task__motor_8cpp_a99019e514f7e452fe08eee6b4f05d620}} 
+float {\bfseries rev\+\_\+to\+\_\+mm} = 2$\ast$3.\+1415$\ast$3
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_af14c6d623ff1aec896b4d087ab74caa0}\label{task__motor_8cpp_af14c6d623ff1aec896b4d087ab74caa0}} 
+float {\bfseries pos} = 0
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_afdc30c04b217fc6decbe24b8500332aa}\label{task__motor_8cpp_afdc30c04b217fc6decbe24b8500332aa}} 
+int16\+\_\+t {\bfseries my\+\_\+duty} = 100
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a8db9984fc93501b5b43e1bcdf8027bf9}\label{task__motor_8cpp_a8db9984fc93501b5b43e1bcdf8027bf9}} 
+float {\bfseries encoder\+\_\+pos} = 0
+\item 
+\mbox{\Hypertarget{task__motor_8cpp_a23a888b3793b5548afb456e72fc78440}\label{task__motor_8cpp_a23a888b3793b5548afb456e72fc78440}} 
+float {\bfseries spot\+\_\+distance} = 207
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This program includes motor task which interfaces with the motor by creating an object of the motor driver class and turning on/off the motor based on other task data. This also includes encoder functionality using an ISR to track motor position. Task motor runs through two states where it is off checking if there is a spot needed or turned on and checking if it has reached the rack.
+
+\begin{DoxyAuthor}{Author}
+Christian Clephan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11-\/25-\/22 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{task__motor_8cpp_aa5e85a29ea6967e65c3765aaf9cbf0f7}\label{task__motor_8cpp_aa5e85a29ea6967e65c3765aaf9cbf0f7}} 
+\index{task\_motor.cpp@{task\_motor.cpp}!task\_motor@{task\_motor}}
+\index{task\_motor@{task\_motor}!task\_motor.cpp@{task\_motor.cpp}}
+\doxysubsubsection{\texorpdfstring{task\_motor()}{task\_motor()}}
+{\footnotesize\ttfamily void task\+\_\+motor (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+Task motor interfaces with other tasks shares to turn on and off motor. 
+
+First the pins for the encoder are set and the ISRs are set to run when digital\+READ of either pin OUTA or OUTB is changed. Next, the state machine is run starting at checking if a spot is needed, and if so spinning the motor and transitioning states. In the next state the encoder is used to track motor position to if the barbell has been pulled enough to reach the safety rack. 

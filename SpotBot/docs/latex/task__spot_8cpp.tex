@@ -1,0 +1,66 @@
+\hypertarget{task__spot_8cpp}{}\doxysection{src/task\+\_\+spot.cpp File Reference}
+\label{task__spot_8cpp}\index{src/task\_spot.cpp@{src/task\_spot.cpp}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Print\+Stream.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}task\+\_\+spot.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shares.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_a5234cd581d20d4c7ba74bff054736fa1}\label{task__spot_8cpp_a5234cd581d20d4c7ba74bff054736fa1}} 
+Share$<$ bool $>$ {\bfseries send\+\_\+data} (\char`\"{}Send data\char`\"{})
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_a18e588db765af4762a8dfe8df691c55d}\label{task__spot_8cpp_a18e588db765af4762a8dfe8df691c55d}} 
+Share$<$ bool $>$ {\bfseries spot\+\_\+me\+\_\+bro} (\char`\"{}Spot Trigger\char`\"{})
+\item 
+void \mbox{\hyperlink{task__spot_8cpp_a423a8a02af1ac03f6f10c0fc5ed35119}{task\+\_\+spot}} (void $\ast$p\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Task motor interfaces with other tasks shares to turn on and off motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_a6ffc5d167cc15577bbe8b026afbc4372}\label{task__spot_8cpp_a6ffc5d167cc15577bbe8b026afbc4372}} 
+float {\bfseries r\+\_\+vel}
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_ad336dccee583bdafaf6a42f07883eb99}\label{task__spot_8cpp_ad336dccee583bdafaf6a42f07883eb99}} 
+float {\bfseries l\+\_\+vel}
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_a5e28c58db2f35e8c6573474c4f1e8c69}\label{task__spot_8cpp_a5e28c58db2f35e8c6573474c4f1e8c69}} 
+uint8\+\_\+t {\bfseries state\+\_\+spot} = 0
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_a1bee3a3646cdd14cd605d7ccf6aad1f2}\label{task__spot_8cpp_a1bee3a3646cdd14cd605d7ccf6aad1f2}} 
+uint16\+\_\+t {\bfseries timer\+\_\+counter} = 0
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_acc8a5351fb037679ba213c36e690c3e5}\label{task__spot_8cpp_acc8a5351fb037679ba213c36e690c3e5}} 
+uint8\+\_\+t {\bfseries rep\+\_\+counter} = 0
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_ae0683459d1983a4933c5f4cee813c7d0}\label{task__spot_8cpp_ae0683459d1983a4933c5f4cee813c7d0}} 
+uint16\+\_\+t {\bfseries spot\+\_\+counter} = 0
+\item 
+\mbox{\Hypertarget{task__spot_8cpp_ab8fc4db65264f957bf719b3315985ae4}\label{task__spot_8cpp_ab8fc4db65264f957bf719b3315985ae4}} 
+uint8\+\_\+t {\bfseries max\+\_\+time} = 60
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This program includes spot task which reads velocity values obtained from task\+\_\+\+IMU determine where the lifter is in the lift and if they need a spot or not. This starts with setting the spot timer (timer\+\_\+counter) to 0 and making sure the bar is laying still. This moves to the next state so it is confirmed the bar is racked and the user hasn\textquotesingle{}t started to lift. Once the IMUs both see downward motion this moves into the descent state and starts a timer on limiting the length of the rep. If the bar is stopped again the user now has the barbell on their chest where the IMU will now check for upward motion. If the barbell moves up then down this counts as a fail and starts the motor, otherwise if the bar reaches a standstill again the bar must be racked (counting as 1 rep). The spot is also initiated if spot timer reaches 100 (a.\+k.\+a. roughly 5 seconds). If the spot is initiated the IMU values aren\textquotesingle{}t read anymore and the slack must be reset on the robot.
+
+\begin{DoxyAuthor}{Author}
+Christian Clephan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11-\/26-\/22 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{task__spot_8cpp_a423a8a02af1ac03f6f10c0fc5ed35119}\label{task__spot_8cpp_a423a8a02af1ac03f6f10c0fc5ed35119}} 
+\index{task\_spot.cpp@{task\_spot.cpp}!task\_spot@{task\_spot}}
+\index{task\_spot@{task\_spot}!task\_spot.cpp@{task\_spot.cpp}}
+\doxysubsubsection{\texorpdfstring{task\_spot()}{task\_spot()}}
+{\footnotesize\ttfamily void task\+\_\+spot (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+Task motor interfaces with other tasks shares to turn on and off motor. 
+
+Interrets the velocity queue values from task IMU to find where the lifter is in the program. The states go in order of barbell racked, bar descending, bar stopped at chest, bar moving upward, bar re-\/racked. If the rep takes to long or the bar begins descending if it should be moving upward then a spot is requested. 

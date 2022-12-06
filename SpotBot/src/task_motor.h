@@ -1,4 +1,4 @@
-/** @file motor_driver.h
+/** @file task_motor.h
  *  This is the header for the task motor file
  * 
  *  @author Christian Clephan
